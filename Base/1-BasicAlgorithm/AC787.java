@@ -21,6 +21,25 @@ public class AC787 {
         if(l >= r)
             return;
         
-        int x = array[l + r >> 1], tmp[] = new int[r - l + 1];
+        int mid = l + r >> 1, tmp[] = new int[r - l + 1], i = l, j = mid + 1, k = 0;
+
+        merge_sort(array, l, mid);
+        merge_sort(array, mid + 1, r);
+
+        while (i <= mid && j <= r) {
+            if (array[i] <= array[j])
+                tmp[k++] = array[i++];
+            else
+                tmp[k++] = array[j++];
+        }
+        
+        while(i <= mid)
+            tmp[k++] = array[i++];
+        
+        while(j <= r)
+            tmp[k++] = array[j++];
+
+        for(int m = l, n = 0; m <= r;)
+            array[m++] = tmp[n++];
     }
 }
