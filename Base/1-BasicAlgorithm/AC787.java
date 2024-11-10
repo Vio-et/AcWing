@@ -39,7 +39,7 @@ public class AC787 {
         while(j <= r)
             tmp[k++] = array[j++];
 
-        for(int m = l, n = 0; m <= r;)
-            array[m++] = tmp[n++];
+        for(int c = 0; c < r - l + 1; c++)
+            array[l + c] = tmp[c];
     }
 }
