@@ -8,6 +8,7 @@ public class AC794 {
 
         String a = scanner.nextLine();
         int b = scanner.nextInt();
+        
         Integer c = -1;
 
         for (int i = a.length() - 1; i >= 0; i--)
