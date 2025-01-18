@@ -1,5 +1,3 @@
-package Base.DataStructure;
-
 import java.util.Scanner;
 
 public class AC826{
