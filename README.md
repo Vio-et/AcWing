@@ -1,2 +1,2 @@
 # AcWing
-Algorithm Learning fron Acwing
+Algorithm Learning from Acwing
