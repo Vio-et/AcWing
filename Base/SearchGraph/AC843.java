@@ -1,5 +1,3 @@
-package Base.SearchGraph;
-
 import java.util.Scanner;
 
 public class AC843 {
