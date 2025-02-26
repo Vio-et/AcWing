@@ -1,73 +1,65 @@
-import java.util.Scanner;
-import java.util.Queue;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 public class AC846 {
-    public static void main(String[] args) {
+    final static int N = 100010, M = N * 2; 
+    static int head[] = new int[N];         // 保存链表头
+    static int e[] = new int[M];            // 存储邻接表（链表实现）
+    static int ne[] = new int[M];
+    static boolean st[] = new boolean[N];
+    static int idx;
+    static int res;
+    static int n;
+
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
-        String str = "";
+        n = scanner.nextInt();
 
-        for (int i = 0; i < 9; i++)
-            str += scanner.next();
+        init();
 
-        System.out.println(bfs(str));
+        for(int i = 0; i < n - 1; i++){
+            int a = scanner.nextInt(), b = scanner.nextInt();
+            // 添加双向边
+            add(a, b);
+            add(b, a);
+        }
+        // 深度优先搜索
+        dfs(1);
 
+        System.out.println(res);
         scanner.close();
     }
+    
+    public static int dfs(int u){
+        st[u] = true;
+        
+        int size = 0, sum = 0;
+        for(int i = head[u]; i != -1; i = ne[i]){
+            int j = e[i];
 
-    public static int bfs(String str) {
-        boolean isFind = false;
-        int dx[] = { -1, 1, 0, 0 }, dy[] = { 0, 0, -1, 1 }, res = -1;
-        String end = "12345678x";
-
-        Queue<String> queue = new LinkedList<>();           // 利用字符串来保存每种情况，利用队列来宽搜
-        Map<String, Integer> distance = new HashMap<>();    // 利用字典来保存距离
-
-        // 将起始情况加入队列
-        queue.add(str);
-        distance.put(str, 0);
-
-        // 当队列不为空
-        while (!queue.isEmpty() && !isFind) {
-            // 获取队头元素
-            String top = queue.peek();
-            queue.remove();
-            // 扩展队头
-            int loc = top.indexOf('x'), x = loc / 3, y = loc % 3;
-
-            for (int i = 0; i < 4; i++) {
-                int a = x + dx[i], b = y + dy[i];
-
-                if (a >= 0 && a < 3 && b >= 0 && b < 3) {
-                    String tmp = swap(top, loc, a * 3 + b);
-                    if (!distance.containsKey(tmp)) {
-                        // 扩展成功，加入队列，更新距离
-                        queue.add(tmp);
-                        distance.put(tmp, distance.get(top) + 1);
-                    }
-                    // 恢复现场（新开的tmp，所以不用恢复）
-                }
-            }
-
-            if (top.equals(end)) {
-                isFind = true;
-                res = distance.get(top);
+            if(!st[j]){
+                int s = dfs(j);
+                size = Math.max(size, s);
+                sum += s;
             }
         }
 
-        return res;
+        size = Math.max(size, n - sum - 1);
+        res = Math.min(size, res);
+
+        return sum + 1;
     }
-    
-    public static String swap(String str, int a, int b) {
-        StringBuilder sb = new StringBuilder(str);
 
-        char t = sb.charAt(a);
-        sb.setCharAt(a, sb.charAt(b));
-        sb.setCharAt(b, t);
+    public static void init(){
+        res = N;
 
-        return sb.toString();
+        for(int i = 0; i < N; i++)
+            head[i] = -1;
+    }
+
+    public static void add(int a, int b){
+        e[idx] = b;
+        ne[idx] = head[a];
+        head[a] = idx++;
     }
 }
