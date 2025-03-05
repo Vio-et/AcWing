@@ -5,7 +5,7 @@ public class AC859 {
     final static int N = 100010;
     final static int M = 200010;
     final static int MAX_INF = 0x3f3f3f3f;
-    static Edge[] edges = new Edge[M];      // 稀疏图 可以用自定义结构图（因为只用循环所有边）
+    static Edge[] edges = new Edge[M];      // 稀疏图 可以用边数组（因为只用循环所有边）
     static int[] parent = new int[N];       // 利用并查集
     
     public static void main(String[] args) {
