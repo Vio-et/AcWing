@@ -26,7 +26,7 @@ public class AC868 {
         for (int i = 2; i <= n; i++) {
             if (st[i]) 
                 prime[cnt++] = i;
-            
+            // 边界为 prime[j] * i <= n
             for (int j = 0; prime[j] <= n / i; j++) {
                 st[prime[j] * i] = false;
 
