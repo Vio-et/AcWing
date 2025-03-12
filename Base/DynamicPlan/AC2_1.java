@@ -1,5 +1,3 @@
-package Base.DynamicPlan;
-
 import java.util.*;
 
 public class AC2_1 {

@@ -1,5 +1,3 @@
-package Base.DynamicPlan;
-
 import java.util.Scanner;
 
 public class AC4 {
