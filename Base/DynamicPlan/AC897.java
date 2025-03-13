@@ -10,7 +10,7 @@ public class AC897 {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt(), m = sc.nextInt();
-        String t = sc.nextLine(), A = sc.nextLine(), B = sc.nextLine();
+        String A = sc.nextLine(), B = sc.nextLine();
 
         for (int i = 1; i <= n; i++)
             a[i] = A.charAt(i - 1);
