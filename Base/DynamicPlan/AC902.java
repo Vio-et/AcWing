@@ -10,10 +10,9 @@ public class AC902 {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        String t = sc.nextLine(), A = sc.nextLine();
+        String A = sc.next();
         int m = sc.nextInt();
-        t = sc.nextLine();
-        String B = sc.nextLine();
+        String B = sc.next();
 
         for (int i = 1; i <= n; i++) {
             a[i] = A.charAt(i - 1);
